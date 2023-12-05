@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useActionData, useNavigation, useSubmit } from "@remix-run/react";
@@ -13,6 +13,14 @@ import {
   List,
   Link,
   InlineStack,
+  InlineGrid,
+  TextField,
+  useBreakpoints,
+  Divider,
+  Thumbnail,
+  DropZone,
+  LegacyStack,
+  ButtonGroup,
 } from "@shopify/polaris";
 import { authenticate } from "../shopify.server";
 
@@ -69,6 +77,7 @@ export default function Index() {
   const nav = useNavigation();
   const actionData = useActionData<typeof action>();
   const submit = useSubmit();
+  const { smUp } = useBreakpoints();
   const isLoading =
     ["loading", "submitting"].includes(nav.state) && nav.formMethod === "POST";
   const productId = actionData?.product?.id.replace(
@@ -83,198 +92,194 @@ export default function Index() {
   }, [productId]);
   const generateProduct = () => submit({}, { replace: true, method: "POST" });
 
+  const [files, setFiles] = useState<File[]>([]);
+
+  const handleDropZoneDrop = useCallback(
+    (_dropFiles: File[], acceptedFiles: File[], _rejectedFiles: File[]) =>
+      setFiles((files) => [...files, ...acceptedFiles]),
+    []
+  );
+
+  const validImageTypes = ["image/gif", "image/jpeg", "image/png"];
+
+  const fileUpload = !files.length && <DropZone.FileUpload />;
+  const uploadedFiles = files.length > 0 && (
+    <div style={{ padding: "0" }}>
+      <LegacyStack vertical>
+        {files.map((file, index) => (
+          <LegacyStack alignment="center" key={index}>
+            <Thumbnail
+              size="small"
+              alt={file.name}
+              source={
+                validImageTypes.includes(file.type)
+                  ? window.URL.createObjectURL(file)
+                  : NoteMinor
+              }
+            />
+            <div>
+              {file.name}{" "}
+              <Text variant="bodySm" as="p">
+                {file.size} bytes
+              </Text>
+            </div>
+          </LegacyStack>
+        ))}
+      </LegacyStack>
+    </div>
+  );
+
   return (
-    <Page>
-      <ui-title-bar title="Remix app template">
-        <button variant="primary" onClick={generateProduct}>
-          Generate a product
-        </button>
-      </ui-title-bar>
-      <BlockStack gap="500">
-        <Layout>
-          <Layout.Section>
-            <Card>
-              <BlockStack gap="500">
-                <BlockStack gap="200">
-                  <Text as="h2" variant="headingMd">
-                    Congrats on creating a new Shopify app 🎉
-                  </Text>
-                  <Text variant="bodyMd" as="p">
-                    This embedded app template uses{" "}
-                    <Link
-                      url="https://shopify.dev/docs/apps/tools/app-bridge"
-                      target="_blank"
-                      removeUnderline
-                    >
-                      App Bridge
-                    </Link>{" "}
-                    interface examples like an{" "}
-                    <Link url="/app/additional" removeUnderline>
-                      additional page in the app nav
-                    </Link>
-                    , as well as an{" "}
-                    <Link
-                      url="https://shopify.dev/docs/api/admin-graphql"
-                      target="_blank"
-                      removeUnderline
-                    >
-                      Admin GraphQL
-                    </Link>{" "}
-                    mutation demo, to provide a starting point for app
-                    development.
-                  </Text>
-                </BlockStack>
-                <BlockStack gap="200">
-                  <Text as="h3" variant="headingMd">
-                    Get started with products
-                  </Text>
-                  <Text as="p" variant="bodyMd">
-                    Generate a product with GraphQL and get the JSON output for
-                    that product. Learn more about the{" "}
-                    <Link
-                      url="https://shopify.dev/docs/api/admin-graphql/latest/mutations/productCreate"
-                      target="_blank"
-                      removeUnderline
-                    >
-                      productCreate
-                    </Link>{" "}
-                    mutation in our API references.
-                  </Text>
-                </BlockStack>
-                <InlineStack gap="300">
-                  <Button loading={isLoading} onClick={generateProduct}>
-                    Generate a product
-                  </Button>
-                  {actionData?.product && (
-                    <Button
-                      url={`shopify:admin/products/${productId}`}
-                      target="_blank"
-                      variant="plain"
-                    >
-                      View product
-                    </Button>
-                  )}
-                </InlineStack>
-                {actionData?.product && (
-                  <Box
-                    padding="400"
-                    background="bg-surface-active"
-                    borderWidth="025"
-                    borderRadius="200"
-                    borderColor="border"
-                    overflowX="scroll"
-                  >
-                    <pre style={{ margin: 0 }}>
-                      <code>{JSON.stringify(actionData.product, null, 2)}</code>
-                    </pre>
-                  </Box>
-                )}
-              </BlockStack>
-            </Card>
-          </Layout.Section>
-          <Layout.Section variant="oneThird">
-            <BlockStack gap="500">
-              <Card>
-                <BlockStack gap="200">
-                  <Text as="h2" variant="headingMd">
-                    App template specs
-                  </Text>
-                  <BlockStack gap="200">
-                    <InlineStack align="space-between">
-                      <Text as="span" variant="bodyMd">
-                        Framework
-                      </Text>
-                      <Link
-                        url="https://remix.run"
-                        target="_blank"
-                        removeUnderline
-                      >
-                        Remix
-                      </Link>
-                    </InlineStack>
-                    <InlineStack align="space-between">
-                      <Text as="span" variant="bodyMd">
-                        Database
-                      </Text>
-                      <Link
-                        url="https://www.prisma.io/"
-                        target="_blank"
-                        removeUnderline
-                      >
-                        Prisma
-                      </Link>
-                    </InlineStack>
-                    <InlineStack align="space-between">
-                      <Text as="span" variant="bodyMd">
-                        Interface
-                      </Text>
-                      <span>
-                        <Link
-                          url="https://polaris.shopify.com"
-                          target="_blank"
-                          removeUnderline
-                        >
-                          Polaris
-                        </Link>
-                        {", "}
-                        <Link
-                          url="https://shopify.dev/docs/apps/tools/app-bridge"
-                          target="_blank"
-                          removeUnderline
-                        >
-                          App Bridge
-                        </Link>
-                      </span>
-                    </InlineStack>
-                    <InlineStack align="space-between">
-                      <Text as="span" variant="bodyMd">
-                        API
-                      </Text>
-                      <Link
-                        url="https://shopify.dev/docs/api/admin-graphql"
-                        target="_blank"
-                        removeUnderline
-                      >
-                        GraphQL API
-                      </Link>
-                    </InlineStack>
-                  </BlockStack>
-                </BlockStack>
-              </Card>
-              <Card>
-                <BlockStack gap="200">
-                  <Text as="h2" variant="headingMd">
-                    Next steps
-                  </Text>
-                  <List>
-                    <List.Item>
-                      Build an{" "}
-                      <Link
-                        url="https://shopify.dev/docs/apps/getting-started/build-app-example"
-                        target="_blank"
-                        removeUnderline
-                      >
-                        {" "}
-                        example app
-                      </Link>{" "}
-                      to get started
-                    </List.Item>
-                    <List.Item>
-                      Explore Shopify’s API with{" "}
-                      <Link
-                        url="https://shopify.dev/docs/apps/tools/graphiql-admin-api"
-                        target="_blank"
-                        removeUnderline
-                      >
-                        GraphiQL
-                      </Link>
-                    </List.Item>
-                  </List>
-                </BlockStack>
-              </Card>
+    <Page
+      // fullWidth={true}
+      primaryAction={{ content: "View on your store", disabled: true }}
+      secondaryActions={[
+        {
+          content: "Duplicate",
+          accessibilityLabel: "Secondary action label",
+          onAction: () => alert("Duplicate action"),
+        },
+      ]}
+    >
+      <BlockStack gap={{ xs: "800", sm: "400" }}>
+        <InlineGrid columns={{ xs: "1fr", md: "2fr 5fr" }} gap="400">
+          <Box
+            as="section"
+            paddingInlineStart={{ xs: "400", sm: "0" }}
+            paddingInlineEnd={{ xs: "400", sm: "0" }}
+          >
+            <BlockStack gap="400">
+              <Text as="h3" variant="headingMd">
+                Name
+              </Text>
+              <Text as="p" variant="bodyMd">
+                Please enter the name of your phone number
+              </Text>
             </BlockStack>
-          </Layout.Section>
-        </Layout>
+          </Box>
+          <Card roundedAbove="sm">
+            <BlockStack gap="400">
+              <TextField label="Name" autoComplete="false" />
+            </BlockStack>
+          </Card>
+        </InlineGrid>
+        {smUp ? <Divider /> : null}
+        <InlineGrid columns={{ xs: "1fr", md: "2fr 5fr" }} gap="400">
+          <Box
+            as="section"
+            paddingInlineStart={{ xs: "400", sm: "0" }}
+            paddingInlineEnd={{ xs: "400", sm: "0" }}
+          >
+            <BlockStack gap="400">
+              <Text as="h3" variant="headingMd">
+                Image
+              </Text>
+              <Text as="p" variant="bodyMd">
+                Please enter the image of your phone number
+              </Text>
+            </BlockStack>
+          </Box>
+          <Card roundedAbove="sm">
+            <BlockStack gap="400">
+              {/* <Thumbnail
+                source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+                size="large"
+                alt="Black choker necklace"
+              /> */}
+
+              <DropZone onDrop={handleDropZoneDrop}>
+                {uploadedFiles}
+                {fileUpload}
+              </DropZone>
+            </BlockStack>
+          </Card>
+        </InlineGrid>
+        {smUp ? <Divider /> : null}
+        <InlineGrid columns={{ xs: "1fr", md: "2fr 5fr" }} gap="400">
+          <Box
+            as="section"
+            paddingInlineStart={{ xs: "400", sm: "0" }}
+            paddingInlineEnd={{ xs: "400", sm: "0" }}
+          >
+            <BlockStack gap="400">
+              <Text as="h3" variant="headingMd">
+                Subtitle
+              </Text>
+              <Text as="p" variant="bodyMd">
+                Please enter the subtitle of your phone number
+              </Text>
+            </BlockStack>
+          </Box>
+          <Card roundedAbove="sm">
+            <BlockStack gap="400">
+              <TextField label="Subtitle" autoComplete="false" />
+            </BlockStack>
+          </Card>
+        </InlineGrid>
+        {smUp ? <Divider /> : null}
+        <InlineGrid columns={{ xs: "1fr", md: "2fr 5fr" }} gap="400">
+          <Box
+            as="section"
+            paddingInlineStart={{ xs: "400", sm: "0" }}
+            paddingInlineEnd={{ xs: "400", sm: "0" }}
+          >
+            <BlockStack gap="400">
+              <Text as="h3" variant="headingMd">
+                Description
+              </Text>
+              <Text as="p" variant="bodyMd">
+                Please enter the description of your phone number
+              </Text>
+            </BlockStack>
+          </Box>
+          <Card roundedAbove="sm">
+            <BlockStack gap="400">
+              <TextField
+                label="Description"
+                // value={}
+                // onChange={}
+                multiline={4}
+                autoComplete="off"
+              />
+            </BlockStack>
+          </Card>
+        </InlineGrid>
+        {smUp ? <Divider /> : null}
+        <InlineGrid columns={{ xs: "1fr", md: "2fr 5fr" }} gap="400">
+          <Box
+            as="section"
+            paddingInlineStart={{ xs: "400", sm: "0" }}
+            paddingInlineEnd={{ xs: "400", sm: "0" }}
+          >
+            <BlockStack gap="400">
+              <Text as="h3" variant="headingMd">
+                Phone Number
+              </Text>
+              <Text as="p" variant="bodyMd">
+                Please enter the phone number of your phone number
+              </Text>
+            </BlockStack>
+          </Box>
+          <Card roundedAbove="sm">
+            <BlockStack gap="400">
+              <TextField label="Phone Number" autoComplete="false" />
+            </BlockStack>
+          </Card>
+        </InlineGrid>
+        <InlineGrid columns={{ xs: "1fr", md: "2fr 5fr" }} gap="400">
+          <Box
+            as="section"
+            paddingInlineStart={{ xs: "400", sm: "0" }}
+            paddingInlineEnd={{ xs: "400", sm: "0" }}
+          >
+            <BlockStack gap="400">
+              <ButtonGroup>
+                <Button>Cancel</Button>
+                <Button variant="primary">Save</Button>
+              </ButtonGroup>
+            </BlockStack>
+          </Box>
+        </InlineGrid>
       </BlockStack>
     </Page>
   );

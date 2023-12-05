@@ -1,3 +1,28 @@
-# This file stores configurations for your Shopify app.
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
+name = "call-me-button"
+client_id = "31d51619001a93a8c32a0cb0fa86db45"
+application_url = "https://extent-currencies-collected-repository.trycloudflare.com"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
 scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://extent-currencies-collected-repository.trycloudflare.com/auth/callback",
+  "https://extent-currencies-collected-repository.trycloudflare.com/auth/shopify/callback",
+  "https://extent-currencies-collected-repository.trycloudflare.com/api/auth/callback",
+  "https://extent-currencies-collected-repository.trycloudflare.com/.shopify/graphiql/auth/callback"
+]
+
+[webhooks]
+api_version = "2023-10"
+
+[pos]
+embedded = false
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "chocolate-app-tester.myshopify.com"
