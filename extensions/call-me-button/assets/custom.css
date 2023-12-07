@@ -1,0 +1,151 @@
+.callToButton {
+  width: 320px;
+  height: auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  bottom: 80px;
+  right: 15px;
+  z-index: 1000;
+  display: none;
+}
+.callToButton img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50px;
+  margin: 0 auto;
+  display: inline-block;
+}
+.callBox {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.callBox h2 {
+  line-height: 1;
+  margin: 0;
+  padding-top: 10px;
+  font-size: 22px;
+}
+.callBox span {
+  font-size: 14px;
+  color: #808080;
+  padding-top: 0px;
+}
+.callBox p {
+  text-align: center;
+  line-height: 1.4;
+}
+.callBox a {
+  width: 100%;
+  text-decoration: none;
+}
+.callButton {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.callButton svg {
+  width: 35px;
+}
+.phoneNumber {
+  font-size: 25px;
+  line-height: 0 !important;
+  padding: 0;
+}
+
+/* Animation Call Button */
+.content-center {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 12px;
+  bottom: 10px;
+  position: fixed;
+  z-index: 999;
+}
+
+.pulse svg {
+  color: #fff;
+  width: 35px;
+}
+
+.pulse {
+  height: 60px;
+  width: 60px;
+  background-color: orange;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.pulse::before {
+  content: "";
+  position: absolute;
+  border: 1px solid orange;
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  border-radius: 50%;
+  animation: pulse 1s linear infinite;
+}
+
+.pulse::after {
+  content: "";
+  position: absolute;
+  border: 1px solid ORANGE;
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  border-radius: 50%;
+  animation: pulse 1s linear infinite;
+  animation-delay: 0.3s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+.closeBox {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 12px;
+  bottom: 10px;
+  position: fixed;
+  z-index: 999;
+  display: none;
+}
+.closeButton {
+  height: 60px;
+  width: 60px;
+  background-color: red;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.closeButton svg {
+  color: #fff;
+  width: 35px;
+}

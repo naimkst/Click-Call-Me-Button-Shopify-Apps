@@ -1,8 +1,8 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 name = "call-me-button"
-client_id = "f826665618962daa6ea6602800cb1294"
-application_url = "https://automotive-manufacturer-sound-experts.trycloudflare.com"
+client_id = "b863a8bdd5abdf273a317392f7266455"
+application_url = "https://unsigned-kelly-recreation-brisbane.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,10 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://automotive-manufacturer-sound-experts.trycloudflare.com/auth/callback",
-  "https://automotive-manufacturer-sound-experts.trycloudflare.com/auth/shopify/callback",
-  "https://automotive-manufacturer-sound-experts.trycloudflare.com/api/auth/callback",
-  "https://automotive-manufacturer-sound-experts.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://unsigned-kelly-recreation-brisbane.trycloudflare.com/auth/callback",
+  "https://unsigned-kelly-recreation-brisbane.trycloudflare.com/auth/shopify/callback",
+  "https://unsigned-kelly-recreation-brisbane.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
@@ -25,4 +24,4 @@ embedded = false
 
 [build]
 automatically_update_urls_on_dev = true
-dev_store_url = "pixelwebagency.myshopify.com"
+dev_store_url = "devsapps.myshopify.com"
