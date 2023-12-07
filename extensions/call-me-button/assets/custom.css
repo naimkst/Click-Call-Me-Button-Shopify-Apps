@@ -8,6 +8,7 @@
   bottom: 80px;
   right: 15px;
   z-index: 1000;
+  transition: all 5s ease-in-out;
   display: none;
 }
 .callToButton img {
@@ -42,6 +43,7 @@
 .callBox a {
   width: 100%;
   text-decoration: none;
+  cursor: pointer;
 }
 .callButton {
   display: flex;
@@ -85,6 +87,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  cursor: pointer;
 }
 
 .pulse::before {
@@ -144,6 +147,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  cursor: pointer;
 }
 .closeButton svg {
   color: #fff;

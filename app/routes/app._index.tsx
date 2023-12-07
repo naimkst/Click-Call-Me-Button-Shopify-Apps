@@ -85,64 +85,13 @@ export default function Index() {
     ""
   );
 
-  useEffect(() => {
-    if (productId) {
-      shopify.toast.show("Product created");
-    }
-  }, [productId]);
-  const generateProduct = () => submit({}, { replace: true, method: "POST" });
-
-  const [files, setFiles] = useState<File[]>([]);
-
-  const handleDropZoneDrop = useCallback(
-    (_dropFiles: File[], acceptedFiles: File[], _rejectedFiles: File[]) =>
-      setFiles((files) => [...files, ...acceptedFiles]),
-    []
-  );
-
-  const validImageTypes = ["image/gif", "image/jpeg", "image/png"];
-
-  const fileUpload = !files.length && <DropZone.FileUpload />;
-  const uploadedFiles = files.length > 0 && (
-    <div style={{ padding: "0" }}>
-      <LegacyStack vertical>
-        {files.map((file, index) => (
-          <LegacyStack alignment="center" key={index}>
-            <Thumbnail
-              size="small"
-              alt={file.name}
-              source={
-                validImageTypes.includes(file.type)
-                  ? window.URL.createObjectURL(file)
-                  : NoteMinor
-              }
-            />
-            <div>
-              {file.name}{" "}
-              <Text variant="bodySm" as="p">
-                {file.size} bytes
-              </Text>
-            </div>
-          </LegacyStack>
-        ))}
-      </LegacyStack>
-    </div>
-  );
-
   return (
     <Page
-      // fullWidth={true}
-      primaryAction={{ content: "View on your store", disabled: true }}
-      secondaryActions={[
-        {
-          content: "Duplicate",
-          accessibilityLabel: "Secondary action label",
-          onAction: () => alert("Duplicate action"),
-        },
-      ]}
+    // fullWidth={true}
+    // primaryAction={{ content: "View on your store", disabled: false }}
     >
       <BlockStack gap={{ xs: "800", sm: "400" }}>
-        <InlineGrid columns={{ xs: "1fr", md: "2fr 5fr" }} gap="400">
+        <InlineGrid columns={{ xs: "1fr", md: "1fr" }} gap="400">
           <Box
             as="section"
             paddingInlineStart={{ xs: "400", sm: "0" }}
@@ -150,138 +99,73 @@ export default function Index() {
           >
             <BlockStack gap="400">
               <Text as="h3" variant="headingMd">
-                Name
+                How can you use this app?
               </Text>
               <Text as="p" variant="bodyMd">
-                Please enter the name of your phone number
+                Install this app to your Shopify store and you will be able to
+                add a phone number to your store.
               </Text>
-            </BlockStack>
-          </Box>
-          <Card roundedAbove="sm">
-            <BlockStack gap="400">
-              <TextField label="Name" autoComplete="false" />
-            </BlockStack>
-          </Card>
-        </InlineGrid>
-        {smUp ? <Divider /> : null}
-        <InlineGrid columns={{ xs: "1fr", md: "2fr 5fr" }} gap="400">
-          <Box
-            as="section"
-            paddingInlineStart={{ xs: "400", sm: "0" }}
-            paddingInlineEnd={{ xs: "400", sm: "0" }}
-          >
-            <BlockStack gap="400">
-              <Text as="h3" variant="headingMd">
-                Image
-              </Text>
-              <Text as="p" variant="bodyMd">
-                Please enter the image of your phone number
-              </Text>
-            </BlockStack>
-          </Box>
-          <Card roundedAbove="sm">
-            <BlockStack gap="400">
-              {/* <Thumbnail
-                source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
-                size="large"
-                alt="Black choker necklace"
-              /> */}
 
-              <DropZone onDrop={handleDropZoneDrop}>
-                {uploadedFiles}
-                {fileUpload}
-              </DropZone>
-            </BlockStack>
-          </Card>
-        </InlineGrid>
-        {smUp ? <Divider /> : null}
-        <InlineGrid columns={{ xs: "1fr", md: "2fr 5fr" }} gap="400">
-          <Box
-            as="section"
-            paddingInlineStart={{ xs: "400", sm: "0" }}
-            paddingInlineEnd={{ xs: "400", sm: "0" }}
-          >
-            <BlockStack gap="400">
-              <Text as="h3" variant="headingMd">
-                Subtitle
-              </Text>
-              <Text as="p" variant="bodyMd">
-                Please enter the subtitle of your phone number
-              </Text>
-            </BlockStack>
-          </Box>
-          <Card roundedAbove="sm">
-            <BlockStack gap="400">
-              <TextField label="Subtitle" autoComplete="false" />
-            </BlockStack>
-          </Card>
-        </InlineGrid>
-        {smUp ? <Divider /> : null}
-        <InlineGrid columns={{ xs: "1fr", md: "2fr 5fr" }} gap="400">
-          <Box
-            as="section"
-            paddingInlineStart={{ xs: "400", sm: "0" }}
-            paddingInlineEnd={{ xs: "400", sm: "0" }}
-          >
-            <BlockStack gap="400">
-              <Text as="h3" variant="headingMd">
-                Description
-              </Text>
-              <Text as="p" variant="bodyMd">
-                Please enter the description of your phone number
-              </Text>
-            </BlockStack>
-          </Box>
-          <Card roundedAbove="sm">
-            <BlockStack gap="400">
-              <TextField
-                label="Description"
-                // value={}
-                // onChange={}
-                multiline={4}
-                autoComplete="off"
+              <img
+                alt=""
+                width="100%"
+                height="100%"
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center",
+                }}
+                src="../../assets/001.webp"
+              />
+
+              <img
+                alt=""
+                width="100%"
+                height="100%"
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center",
+                }}
+                src="../../assets/002.webp"
+              />
+
+              <img
+                alt=""
+                width="100%"
+                height="100%"
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center",
+                }}
+                src="../../assets/003.webp"
+              />
+
+              <img
+                alt=""
+                width="100%"
+                height="100%"
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center",
+                }}
+                src="../../assets/004.webp"
+              />
+
+              <img
+                alt=""
+                width="100%"
+                height="100%"
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center",
+                }}
+                src="../../assets/005.webp"
               />
             </BlockStack>
-          </Card>
-        </InlineGrid>
-        {smUp ? <Divider /> : null}
-        <InlineGrid columns={{ xs: "1fr", md: "2fr 5fr" }} gap="400">
-          <Box
-            as="section"
-            paddingInlineStart={{ xs: "400", sm: "0" }}
-            paddingInlineEnd={{ xs: "400", sm: "0" }}
-          >
-            <BlockStack gap="400">
-              <Text as="h3" variant="headingMd">
-                Phone Number
-              </Text>
-              <Text as="p" variant="bodyMd">
-                Please enter the phone number of your phone number
-              </Text>
-            </BlockStack>
           </Box>
-          <Card roundedAbove="sm">
-            <BlockStack gap="400">
-              <TextField label="Phone Number" autoComplete="false" />
-            </BlockStack>
-          </Card>
-        </InlineGrid>
-        <InlineGrid columns={{ xs: "1fr", md: "2fr 5fr" }} gap="400">
-          <Box
-            as="section"
-            paddingInlineStart={{ xs: "400", sm: "0" }}
-            paddingInlineEnd={{ xs: "400", sm: "0" }}
-          >
-            <BlockStack gap="400">
-              <ButtonGroup>
-                <Button>Cancel</Button>
-                <Button variant="primary">Save</Button>
-              </ButtonGroup>
-            </BlockStack>
-          </Box>
+
+          <Box paddingBlockEnd={"800"}></Box>
         </InlineGrid>
       </BlockStack>
     </Page>
   );
 }
-

@@ -1,8 +1,15 @@
 {% comment %} {% assign avg_rating = block.settings.product.metafields.demo.avg_rating.value | round %} {% endcomment %}
 {{ 'custom.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'custom.js' | asset_url }}" async></script>
-
-<div class="callToButton" id="showPopup">
+<style>
+  .pulse::before {
+  border: 1px solid {{ block.settings.buttonColour }};
+}
+.pulse::after {
+  border: 1px solid {{ block.settings.buttonColour }};
+}
+</style>
+<div class="callToButton" id="showPopup" style="background-color: {{ block.settings.backgroundColor }};">
   <div class="callBox">
     {% if block.settings.image %}
       <img
@@ -20,9 +27,9 @@
         height="80" />
     {% endif %}
 
-    <h2>{{ block.settings.name }}</h2>
-    <span>{{ block.settings.subtitle }}</span>
-    <p>{{ block.settings.description }}</p>
+    <h2 style="color: {{ block.settings.contentColor }}">{{ block.settings.name }}</h2>
+    <span style="color: {{ block.settings.contentColor }}">{{ block.settings.subtitle }}</span>
+    <p style="color: {{ block.settings.contentColor }}">{{ block.settings.description }}</p>
     <a href="tel:{{ block.settings.phone }}">
       <div class="callButton">
         <svg
@@ -49,7 +56,7 @@
   class="content-center"
   onclick="callMeButtonShow()"
   id="showButton">
-  <div class="pulse">
+  <div class="pulse" style="background-color: {{ block.settings.buttonColour }};">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -116,10 +123,29 @@
         "id": "phone",
         "label": "Caller Phone",
         "default": "(408) 123-4567"
-      }, {
+      }, 
+      {
         "type": "color",
         "id": "phoneColour",
         "label": "Phone Colour",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "buttonColour",
+        "label": "Call Button Colour",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "backgroundColor",
+        "label": "Background Colour",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "contentColor",
+        "label": "Content Colour",
         "default": "#000000"
       }
     ]
