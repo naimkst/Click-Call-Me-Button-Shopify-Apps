@@ -15,13 +15,6 @@ module.exports = {
   ignoredRouteFiles: ["**/.*"],
   appDirectory: "app",
   serverModuleFormat: "cjs",
-  // dev: { port: process.env.HMR_SERVER_PORT || 3001 },
-  dev: { port: 3001 || 3001 },
+  dev: { port: process.env.HMR_SERVER_PORT || 8002 },
   future: {},
-};
-
-module.exports = {
-  devServer: {
-    port: 3001, // Change this to your desired port
-  },
 };
