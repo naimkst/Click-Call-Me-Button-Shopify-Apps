@@ -19,3 +19,9 @@ module.exports = {
   dev: { port: 3001 || 3001 },
   future: {},
 };
+
+module.exports = {
+  devServer: {
+    port: 3001, // Change this to your desired port
+  },
+};
