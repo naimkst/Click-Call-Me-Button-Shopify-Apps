@@ -9,13 +9,13 @@ primary_region = "sin"
 [build]
 
 [env]
-  PORT = "3000"
+  PORT = "3001"
   SHOPIFY_APP_URL = "https://call-me-button.fly.dev"
   SHOPIFY_API_KEY = "b863a8bdd5abdf273a317392f7266455"
   SCOPES = "write_products"
 
 [http_service]
-  internal_port = 3000
+  internal_port = 3001
 
 [[vm]]
   cpu_kind = "shared"
