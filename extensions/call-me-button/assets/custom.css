@@ -5,11 +5,18 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   position: fixed;
-  bottom: 80px;
+  bottom: 40px;
   right: 15px;
   z-index: 1000;
-  transition: all 5s ease-in-out;
-  display: none;
+  transition: bottom 0.15s ease-in-out;
+  visibility: hidden;
+  opacity: 0;
+}
+.showPopup {
+  background-color: rgb(255, 255, 255);
+  opacity: 1;
+  visibility: visible;
+  bottom: 80px;
 }
 .callToButton img {
   width: 80px;
