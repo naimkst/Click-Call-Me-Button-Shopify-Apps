@@ -2,7 +2,7 @@
 
 name = "call-me-button"
 client_id = "ccd124a5d3a749504b5fbadda2ef172e"
-application_url = "https://amongst-format-ethnic-supplements.trycloudflare.com"
+application_url = "https://guy-returned-occasional-specifics.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://amongst-format-ethnic-supplements.trycloudflare.com/auth/callback",
-  "https://amongst-format-ethnic-supplements.trycloudflare.com/auth/shopify/callback",
-  "https://amongst-format-ethnic-supplements.trycloudflare.com/api/auth/callback"
+  "https://guy-returned-occasional-specifics.trycloudflare.com/auth/callback",
+  "https://guy-returned-occasional-specifics.trycloudflare.com/auth/shopify/callback",
+  "https://guy-returned-occasional-specifics.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

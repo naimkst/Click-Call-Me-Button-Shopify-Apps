@@ -24,6 +24,17 @@ import {
 } from "@shopify/polaris";
 import { authenticate } from "../shopify.server";
 
+// @ts-ignore
+import myImage1 from "../assets/images/001.png";
+// @ts-ignore
+import myImage2 from "../assets/images/002.png";
+// @ts-ignore
+import myImage3 from "../assets/images/003.png";
+// @ts-ignore
+import myImage4 from "../assets/images/004.png";
+// @ts-ignore
+import myImage5 from "../assets/images/005.png";
+
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   await authenticate.admin(request);
 
@@ -114,7 +125,7 @@ export default function Index() {
                   objectFit: "cover",
                   objectPosition: "center",
                 }}
-                src="../../assets/001.webp"
+                src={myImage1}
               />
 
               <img
@@ -125,7 +136,7 @@ export default function Index() {
                   objectFit: "cover",
                   objectPosition: "center",
                 }}
-                src="../../assets/002.webp"
+                src={myImage2}
               />
 
               <img
@@ -136,7 +147,7 @@ export default function Index() {
                   objectFit: "cover",
                   objectPosition: "center",
                 }}
-                src="../../assets/003.webp"
+                src={myImage3}
               />
 
               <img
@@ -147,7 +158,7 @@ export default function Index() {
                   objectFit: "cover",
                   objectPosition: "center",
                 }}
-                src="../../assets/004.webp"
+                src={myImage4}
               />
 
               <img
@@ -158,7 +169,7 @@ export default function Index() {
                   objectFit: "cover",
                   objectPosition: "center",
                 }}
-                src="../../assets/005.webp"
+                src={myImage5}
               />
             </BlockStack>
           </Box>
