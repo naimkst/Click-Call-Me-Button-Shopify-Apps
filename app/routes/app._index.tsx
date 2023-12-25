@@ -42,7 +42,7 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 };
 
 export const action = async ({ request }: ActionFunctionArgs) => {
-  const { admin, session } = await authenticate.admin(request);
+  const { admin } = await authenticate.admin(request);
   const color = ["Red", "Orange", "Yellow", "Green"][
     Math.floor(Math.random() * 4)
   ];
@@ -78,9 +78,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     }
   );
   const responseJson = await response.json();
-  // const webhookList = await admin.rest.resources.Webhook.all({
-  //   session: session,
-  // });
 
   return json({
     product: responseJson.data.productCreate.product,
