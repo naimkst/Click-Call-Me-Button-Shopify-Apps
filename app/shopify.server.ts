@@ -26,15 +26,15 @@ const shopify = shopifyApp({
     },
     SHOP_REDACT: {
       deliveryMethod: DeliveryMethod.Http,
-      callbackUrl: "/shop/redact",
+      callbackUrl: "/webhooks",
     },
     CUSTOMERS_DATA_REQUEST: {
       deliveryMethod: DeliveryMethod.Http,
-      callbackUrl: "/customers/data_request",
+      callbackUrl: "/webhooks",
     },
     CUSTOMERS_REDACT: {
       deliveryMethod: DeliveryMethod.Http,
-      callbackUrl: "/customers/redact",
+      callbackUrl: "/webhooks",
     },
   },
   hooks: {
