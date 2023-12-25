@@ -37,6 +37,7 @@ const shopify = shopifyApp({
       callbackUrl: "/webhooks",
     },
   },
+
   hooks: {
     afterAuth: async ({ session }) => {
       shopify.registerWebhooks({ session });
