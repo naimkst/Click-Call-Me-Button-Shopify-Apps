@@ -2,7 +2,7 @@
 
 name = "call-me-button"
 client_id = "dcb0d6d8053b9e8be0bbdc5f97de4f2d"
-application_url = "https://nancy-firewall-thereof-bahamas.trycloudflare.com"
+application_url = "https://centre-facing--mile.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://nancy-firewall-thereof-bahamas.trycloudflare.com/auth/callback",
-  "https://nancy-firewall-thereof-bahamas.trycloudflare.com/auth/shopify/callback",
-  "https://nancy-firewall-thereof-bahamas.trycloudflare.com/api/auth/callback"
+  "https://centre-facing--mile.trycloudflare.com/auth/callback",
+  "https://centre-facing--mile.trycloudflare.com/auth/shopify/callback",
+  "https://centre-facing--mile.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
