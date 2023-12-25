@@ -2,7 +2,7 @@
 
 name = "call-me-button"
 client_id = "dcb0d6d8053b9e8be0bbdc5f97de4f2d"
-application_url = "https://survivors-provides-ads-argued.trycloudflare.com"
+application_url = "https://hq-ace-addition-vocal.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://survivors-provides-ads-argued.trycloudflare.com/auth/callback",
-  "https://survivors-provides-ads-argued.trycloudflare.com/auth/shopify/callback",
-  "https://survivors-provides-ads-argued.trycloudflare.com/api/auth/callback"
+  "https://hq-ace-addition-vocal.trycloudflare.com/auth/callback",
+  "https://hq-ace-addition-vocal.trycloudflare.com/auth/shopify/callback",
+  "https://hq-ace-addition-vocal.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
