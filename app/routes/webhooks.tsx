@@ -26,7 +26,9 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       console.log(" CUSTOMERS_REDACT webhook run");
       break;
     case "SHOP_REDACT":
-      console.log(" SHOP_REDACT webhook run");
+      console.log(
+        " SHOP_REDACT webhook run===================================================================================================================="
+      );
       break;
     default:
       throw new Response("Unhandled webhook topic", { status: 404 });
