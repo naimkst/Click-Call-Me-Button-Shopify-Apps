@@ -1,8 +1,8 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 name = "call-me-button"
-client_id = "ccd124a5d3a749504b5fbadda2ef172e"
-application_url = "https://guy-returned-occasional-specifics.trycloudflare.com"
+client_id = "dcb0d6d8053b9e8be0bbdc5f97de4f2d"
+application_url = "https://beautifully-chicks-prophet-amsterdam.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,9 +11,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://guy-returned-occasional-specifics.trycloudflare.com/auth/callback",
-  "https://guy-returned-occasional-specifics.trycloudflare.com/auth/shopify/callback",
-  "https://guy-returned-occasional-specifics.trycloudflare.com/api/auth/callback"
+  "https://beautifully-chicks-prophet-amsterdam.trycloudflare.com/auth/callback",
+  "https://beautifully-chicks-prophet-amsterdam.trycloudflare.com/auth/shopify/callback",
+  "https://beautifully-chicks-prophet-amsterdam.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
@@ -24,4 +24,4 @@ embedded = false
 
 [build]
 automatically_update_urls_on_dev = true
-dev_store_url = "devsapps.myshopify.com"
+dev_store_url = "devrisen.myshopify.com"

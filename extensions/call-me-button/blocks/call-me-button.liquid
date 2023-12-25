@@ -13,7 +13,7 @@
   <div class="callBox">
     {% if block.settings.image %}
       <img
-        src="{{ block.settings.image | image_url: '' }}"
+        src="{{ block.settings.image | image_url: width: '80', height: '80', crop: 'center' }}"
         alt=""
         loading="eager"
         width="80"
